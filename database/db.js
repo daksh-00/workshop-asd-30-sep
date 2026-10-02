@@ -10,6 +10,13 @@ async function readmyFile(){
         console.log(err)
     }
 }
+async function writeMyFile(data){
+    try{
+        await fs.writeFile(pathTofile, JSON.stringify(data, null, 2))
+    }catch(err){
+        console.log(err)
+    }
+}
 async function readFileWithDelay() {
     await new Promise((resolve, reject)=>{ setTimeout(resolve,1500) })
     let products = await readmyFile()
@@ -17,5 +24,6 @@ async function readFileWithDelay() {
 }
 module.exports = {
     readmyFile,
+    writeMyFile,
     readFileWithDelay
 }

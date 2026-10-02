@@ -1,4 +1,4 @@
-const cache = {}
+let cache = {}
 function cacheMiddleware(req, res, next) {
     try{
         let key = req.originalUrl || req.url
@@ -23,4 +23,10 @@ function cacheMiddleware(req, res, next) {
         next()
     }
 }
-module.exports = cacheMiddleware
+function clearCache(){
+    cache = {}
+}
+module.exports = {
+    cacheMiddleware,
+    clearCache
+}
